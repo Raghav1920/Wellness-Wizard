@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Disease Prediction{% endblock %}
+
+{% block content %}
+<div class="container-fluid pt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Disease Prediction</h2>
+            <p class="text-muted">Enter symptoms to predict possible diseases</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Enter Symptoms</h5>
+                </div>
+                <div class="card-body">
+                    <div class="symptom-input mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="symptomInput" placeholder="e.g. headache, fever">
+                            <button class="btn btn-primary" id="addSymptomBtn">Add</button>
+                        </div>
+                        <div class="suggestions" id="symptomSuggestions"></div>
+                    </div>
+                    
+                    <div id="selectedSymptoms" class="mb-4">
+                        <h6>Selected Symptoms:</h6>
+                        <div id="symptomTags"></div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 py-3" id="predictBtn">
+                        <i class="fas fa-diagnoses me-2"></i> Predict Disease
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Common Symptoms</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap">
+                        <span class="badge bg-light text-dark me-2 mb-2 common-symptom">fever</span>
+                        <span class="badge bg-light text-dark me-2 mb-2 common-symptom">headache</span>
+                        <span class="badge bg-light text-dark me-2 mb-2 common-symptom">cough</span>
+                        <span class="badge bg-light text-dark me-2 mb-2 common-symptom">fatigue</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4" id="resultsSection" style="display: none;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Prediction Results</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Most Likely Disease:</h6>
+                            <div class="alert alert-primary" id="predictedDisease">
+                                No prediction yet
+                            </div>
+                            
+                            <h6 class="mt-4">Recommended Medicine:</h6>
+                            <div class="alert alert-success" id="recommendedMedicine">
+                                Add symptoms and predict
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Treatment Options:</h6>
+                            <ul class="list-group mb-3" id="medicationOptions"></ul>
+                            
+                            <h6>Prevention Tips:</h6>
+                            <ul class="list-group" id="preventionTips"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/predict.js"></script>
+{% endblock %}
